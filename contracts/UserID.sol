@@ -10,7 +10,7 @@ contract UserID {
       string dob;
       string driverId_endDate;
       uint numOfInfractions;
-      uint passportId;
+      string passportId;
 
     }
 
@@ -22,13 +22,18 @@ contract UserID {
     uint public UID_Count;
 
     //function to add candidates
-    function addUID (uint id, string _name, string _dob, string _exp_date, uint _infractions, uint _passID) private { // _ underscore shows variable is local instead of state
+    function addUID (uint id, string _name, string _dob, string _exp_date, uint _infractions, string _passID) private { // _ underscore shows variable is local instead of state
       UID_Count++;
       UID_Map[UID_Count] = UID_Struct(UID_Count, _name, _dob, _exp_date, _infractions, _passID);
     }
 
-    function UserID () public {
-      addUID(UID_Count,"Airwrecka", "01/02/1993", "20/02/2030", 12, 023);
+    function addUID2 (uint id, string _name, string _dob, string _exp_date, uint _infractions, string _passID) public { // _ underscore shows variable is local instead of state
+      UID_Count++;
+      UID_Map[UID_Count] = UID_Struct(UID_Count, _name, _dob, _exp_date, _infractions, _passID);
     }
+
+    /* function UserID () public {
+      addUID(UID_Count,"Erica Mcbride", "01/02/1993", "20/02/2030", 3, "1278973");
+    } */
 
 }

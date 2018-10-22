@@ -31,6 +31,34 @@ initContract: function() {
   });
 },
 
+
+//Register
+submitForm: function() {
+  var name = $("#name").val();
+  var birth = $("#birth").val();
+  var exp = $("#exp").val();
+  var violations = $("#vio").val();
+  var passport = $("#psp").val();
+
+  alert(birth);
+  App.contracts.UserID.deployed().then(function(instance) {
+       return instance.addUID2(12,name,birth,exp,violations,passport);
+     }).then(function(result) {
+       // Wait for votes to update
+       alert("bad");
+     }).catch(function(err) {
+       console.error(err);
+       alert(err);
+     });
+
+
+
+},
+
+
+
+
+
 render: function() {
   var userInstance;
   var loader = $("#loader");
@@ -52,9 +80,11 @@ render: function() {
     userInstance = instance;
     return userInstance.UID_Count();
   }).then(function(count) {
+
+    //index
     var candidatesResults = $("#candidatesResults");
     var nameResults = $("#user_name");
-    candidatesResults.empty();
+    candidatesResults.empty
 
     for (var i = 1; i <= count; i++) {
       userInstance.UID_Map(i).then(function(map) {
